@@ -1,0 +1,14 @@
+name: guppi-sound-pack
+version: 1.1.0
+description: GUPPI CESP sounds for Codex lifecycle events on macOS.
+author:
+  name: Liran Tal
+  url: https://github.com/lirantal
+license: CC-BY-NC-4.0
+homepage: https://github.com/lirantal/agent-plugin-guppi-sound-pack
+repository: https://github.com/lirantal/agent-plugin-guppi-sound-pack
+keywords: [codex, sound, cesp, openpeon, guppi]
+targets: [codex]
+includes: auto
+dependencies:
+  apm: []

@@ -11,6 +11,55 @@ and the machine systems to which they are connected. [1](https://bobiverse.fando
 
 Now GUPPI can support you while coding in Claude, Codex and many other tools.
 
+## Install for Codex with APM (macOS)
+
+This repository is an [APM](https://github.com/microsoft/apm) package for Codex.
+It installs a lightweight Codex lifecycle hook and uses macOS's built-in
+`afplay` command to play GUPPI sounds without delaying the agent.
+
+```bash
+apm install lirantal/agent-plugin-guppi-sound-pack --target codex --global
+```
+
+APM writes the generated Codex hook configuration under `~/.codex/` and keeps
+the pack assets in `~/.apm/apm_modules/`. Do not move or hand-edit either
+location; rerun APM to update or repair the installation.
+
+The hook maps these Codex lifecycle events to CESP categories:
+
+| Codex event | GUPPI category |
+| --- | --- |
+| Session start | `session.start` |
+| Permission request | `input.required` |
+| Context compaction | `resource.limit` |
+| Agent turn complete | `task.complete` |
+
+Task acknowledgements are intentionally silent by default. To enable them for
+the Codex CLI, launch it with `GUPPI_ACKNOWLEDGE=1 codex`.
+
+After installation, start a new Codex task and review/trust the new hook if
+Codex prompts you. The same `~/.codex` configuration is the integration point
+for Codex desktop environments that support local lifecycle hooks.
+
+### Update and remove
+
+Update the global dependency and redeploy its Codex hook with:
+
+```bash
+apm update --global --target codex --yes
+```
+
+To remove it, use APM's dependency-management commands rather than deleting
+generated files manually.
+
+### Scope
+
+The initial APM integration targets macOS only. The CESP/OpenPeon manifest and
+sound assets remain usable by other compatible tools, including PeonPing.
+
+Install directly from this Git repository. Current APM archive packing does not
+retain the root CESP data assets required by this hook runtime.
+
 ## License
 
 GUPPI quotes are copyright Dennis E. Taylor used here under fair use. This sound
