@@ -21,8 +21,21 @@ Run this once from any directory:
 apm install lirantal/agent-plugin-guppi-sound-pack --target codex --global
 ```
 
-Then fully quit and reopen the Codex/ChatGPT desktop app, start a new task, and
-approve the hook if Codex asks you to trust it.
+### Trust the hooks (required)
+
+Codex does not run non-managed command hooks until you review and trust them.
+Open the Hooks UI in the Codex app, review the installed commands, and choose
+**Trust all and continue**. You can do the same from the Codex CLI:
+
+```bash
+codex
+```
+
+Then run `/hooks`, review the commands, and select **Trust all and continue**.
+Codex records trust for the current hook definitions, so review and trust them
+again after an update if Codex marks them as changed.
+
+Then fully quit and reopen the Codex/ChatGPT desktop app and start a new task.
 
 ## What happens
 
